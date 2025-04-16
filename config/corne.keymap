@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2020 The ZMK Contributors
  *
@@ -522,7 +521,7 @@
 &none  &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)     &cpln                    &sret          &kp END   &kp HOME  &none
 &none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DELETE)  &kp RET                  &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
 &none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &new_mtab          &kp DELETE      &kp LG(LS(PRINTSCREEN))  &kp LC(LA(T))  &end_ret  &selline  &none
-                                     &kp LMETA     &to 0          &mo 5              &switch_mouse   &none                    &kp RALT
+                                     &kp LMETA     &to 0          &mo 5              &switch_mouse   &switch_mouse            &kp RALT
             >;
         };
 
