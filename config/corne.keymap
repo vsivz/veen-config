@@ -241,6 +241,18 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        ht_k_lyr: ht_k_lyr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_K_LYR";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <140>;
+            bindings = <&mo>, <&kp>;
+
+            require-prior-idle-ms = <70>;
+            hold-trigger-on-release;
+        };
     };
 
     macros {
@@ -610,10 +622,10 @@
 
         mouse_locked {
             bindings = <
-&to 0      &off_mouse   &kp W            &kp X       &kp Y      &none        &none          &none          &kt LSHFT  &none  &none  &none
-&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F        &ht_lyr 15 15  &kp N          &kp E      &kp I  &kp O  &tog 16
-&kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)   &kp LC(V)  &none        &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
-                                         &off_mouse  &kp SPACE  &kp SPACE    &none          &none          &none
+&to 0      &off_mouse   &kp W            &kp X       &kp Y      &none                 &none          &none          &kt LSHFT  &none  &none  &none
+&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 15 15  &kp N          &kp E      &kp I  &kp O  &tog 16
+&kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)   &kp LC(V)  &none                 &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
+                                         &off_mouse  &kp SPACE  &ht_k_lyr 17 SPACE    &none          &none          &none
             >;
         };
 
