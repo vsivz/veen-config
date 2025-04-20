@@ -658,10 +658,10 @@
 
         mouse_slow {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp COLON  &kp D   &kp C   &kp Z   &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans     &trans
+&trans  &trans  &trans     &trans     &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans
+&trans  &trans  &kp LS(R)  &kp LS(S)  &trans  &trans    &trans  &kp COLON  &kp D   &kp C   &kp Z   &trans
+&trans  &trans  &trans     &trans     &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans
+                           &trans     &trans  &trans    &trans  &trans     &trans
             >;
         };
 
@@ -680,15 +680,6 @@
 &none  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2   &none  &none    &none  &none  &none  &none  &none  &none
 &none  &bt BT_DISC 0  &bt BT_DISC 1   &bt BT_DISC 2  &none  &none    &none  &none  &none  &none  &none  &none
                                       &none          &none  &to 0    &to 0  &none  &none
-            >;
-        };
-
-        layer_21 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
