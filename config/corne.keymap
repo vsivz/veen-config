@@ -253,6 +253,15 @@
             require-prior-idle-ms = <70>;
             hold-trigger-on-release;
         };
+
+        ht_mtab: ht_mtab {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_MTAB";
+            bindings = <&ht_lyr_mtab>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
     };
 
     macros {
@@ -472,7 +481,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&lt 2 SPACE>,
+                <&mo 2>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&kp LEFT_GUI>,
@@ -507,7 +516,7 @@
 &kp LS(LC(LG(D)))  &none  &kp W           &kp F                &kp P              &kp G          &kp J        &kp L               &kp U                 &kp Y            &none          &kp RCTRL
 &kp RALT           &kp A  &left_hrm2 3 R  &left_hrm_3 LCTRL S  &left_hrm LSHFT T  &kp D          &kp H        &right_hrm LSHFT N  &right_hrm_3 LCTRL E  &right_hrm2 3 I  &kp O          &kp RALT
 &kp LEFT_GUI       &kp Q  &kp Z           &kp C                &kp V              &kp B          &kp K        &kp M               &kp X                 &dot             &kp SEMICOLON  &kp LEFT_GUI
-                                          &ht_lyr 12 12        &ht_lyr_mtab       &ht_lyr 1 5    &ht_lyr 1 5  &ht_lyr_mtab        &ht_lyr 12 12
+                                          &ht_lyr 12 12        &ht_mtab 0 SPACE   &ht_lyr 1 5    &ht_lyr 1 5  &ht_mtab 0 SPACE    &ht_lyr 12 12
             >;
         };
 
