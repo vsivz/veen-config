@@ -461,7 +461,7 @@
         mouse {
             bindings = <
 &to 0      &off_mouse   &kp W            &kp X       &kp Y      &none                 &none          &none          &kt LSHFT  &none  &none  &none
-&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 14 14  &kp N          &kp E      &kp I  &kp O  &tog 15
+&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 14 14  &kp N          &kp E      &kp I  &kp O  &tog 14
 &kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)   &kp LC(V)  &none                 &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
                                          &tog_mouse  &kp SPACE  &ht_k_lyr 16 SPACE    &none          &none          &none
             >;
@@ -479,18 +479,9 @@
         mouse_locked {
             bindings = <
 &to 0      &off_mouse   &kp W            &kp X       &kp Y      &none                 &none          &none          &kt LSHFT  &none  &none  &none
-&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 15 15  &kp N          &kp E      &kp I  &kp O  &tog 15
+&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 14 14  &kp N          &kp E      &kp I  &kp O  &tog 14
 &kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)   &kp LC(V)  &none                 &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
                                          &off_mouse  &kp SPACE  &ht_k_lyr 16 SPACE    &none          &none          &none
-            >;
-        };
-
-        mouse_funcs {
-            bindings = <
-&trans  &trans           &trans            &kp LG(F6)  &trans      &trans    &trans    &kp LALT       &kp LSHFT  &kp LCTRL  &trans  &trans
-&trans  &left_mousemove  &right_mousemove  &kp LG(F5)  &mousemove  &trans    &trans    &trans         &trans     &trans     &trans  &trans
-&trans  &kp LC(TAB)      &kp LS(LC(TAB))   &kp LC(C)   &kp LC(V)   &trans    &trans    &trans         &trans     &trans     &trans  &trans
-                                           &kt Y       &kt W       &kt X     &kt LGUI  &kt LG(LCTRL)  &kt LGUI
             >;
         };
 
@@ -500,6 +491,15 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        mouse_funcs {
+            bindings = <
+&trans  &trans           &trans            &kp LG(F6)  &trans      &trans    &trans    &kp LALT       &kp LSHFT  &kp LCTRL  &trans  &trans
+&trans  &left_mousemove  &right_mousemove  &kp LG(F5)  &mousemove  &trans    &trans    &trans         &trans     &trans     &trans  &trans
+&trans  &kp LC(TAB)      &kp LS(LC(TAB))   &kp LC(C)   &kp LC(V)   &trans    &trans    &trans         &trans     &trans     &trans  &trans
+                                           &kt Y       &kt W       &kt X     &kt LGUI  &kt LG(LCTRL)  &kt LGUI
             >;
         };
 
@@ -526,13 +526,13 @@
         compatible = "zmk,conditional-layers";
 
         mouse_slow_helper_1 {
-            if-layers = <15 12>;
-            then-layer = <14>;
+            if-layers = <14 12>;
+            then-layer = <15>;
         };
 
         mouse_slow_helper_2 {
-            if-layers = <15 13>;
-            then-layer = <14>;
+            if-layers = <14 11>;
+            then-layer = <15>;
         };
 
         mouse_locked_helper_ {
