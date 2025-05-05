@@ -212,31 +212,17 @@
             label = "CAPSWORD";
         };
 
-        toFunc: toFunc {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp F22 &to 5 &tog 10>;
-            label = "TOFUNC";
-        };
-
-        leave_func: leave_func {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&tog 10 &to 0>;
-            label = "LEAVE_FUNC";
-        };
-
         on_MTab: on_MTab {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt LEFT_META &tog 11 &kp TAB>;
+            bindings = <&kt LEFT_META &tog 10 &kp TAB>;
             label = "ON_MTAB";
         };
 
         on_MSTab: on_MSTab {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt LEFT_META &tog 11 &kp LS(TAB)>;
+            bindings = <&kt LEFT_META &tog 10 &kp LS(TAB)>;
             label = "ON_MSTAB";
         };
 
@@ -371,7 +357,7 @@
 &kp LS(LC(LG(D)))  &none  &kp W           &kp F                &kp P              &kp G          &kp J        &kp L               &kp U                 &kp Y            &none          &kp RCTRL
 &kp RALT           &kp A  &left_hrm2 3 R  &left_hrm_3 LCTRL S  &left_hrm LSHFT T  &kp D          &kp H        &right_hrm LSHFT N  &right_hrm_3 LCTRL E  &right_hrm2 3 I  &kp O          &kp RALT
 &kp LEFT_GUI       &kp Q  &kp Z           &kp C                &kp V              &kp B          &kp K        &kp M               &kp X                 &dot             &kp SEMICOLON  &kp LEFT_GUI
-                                          &ht_lyr 12 12        &ht_mtab 0 SPACE   &ht_lyr 1 5    &ht_lyr 1 5  &ht_mtab 0 SPACE    &ht_lyr 12 12
+                                          &ht_lyr 11 11        &ht_mtab 0 SPACE   &ht_lyr 1 4    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 11 11
             >;
         };
 
@@ -404,7 +390,7 @@
 &none  &kp GRAVE      &kp AMPERSAND    &kp ASTRK    &kp TILDE       &kp QUESTION         &kp BSLH       &kp PIPE   &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none
 &none  &kp EQUAL      &kp UNDER        &kp CARET    &kp APOSTROPHE  &kp DOUBLE_QUOTES    &kp SLASH      &kp MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PLUS          &none
 &none  &kp LESS_THAN  &kp EXCLAMATION  &kp AT       &kp PERCENT     &kp GRAVE            &kp DOLLAR     &kp HASH   &kp LBKT              &kp RBKT               &kp GREATER_THAN  &none
-                                       &ht_lyr 8 8  &none           &ht_lyr 12 12        &ht_lyr 12 12  &none      &ht_lyr 8 8
+                                       &ht_lyr 8 8  &none           &ht_lyr 11 11        &ht_lyr 11 11  &none      &ht_lyr 8 8
             >;
         };
 
@@ -455,19 +441,10 @@
 
         plaintext {
             bindings = <
-&none  &none  &kp W  &kp F  &kp P      &kp G            &kp J      &kp L      &kp U  &kp Y  &none          &none
-&none  &kp A  &kp R  &kp S  &kp T      &kp D            &kp H      &kp N      &kp E  &kp I  &kp O          &none
-&none  &kp Q  &kp Z  &kp C  &kp V      &kp B            &kp K      &kp M      &kp X  &dot   &kp SEMICOLON  &none
-                     &to 0  &kp SPACE  &ht_lyr 10 10    &kp SPACE  &kp SPACE  &to 0
-            >;
-        };
-
-        func_helper {
-            bindings = <
-&trans  &trans  &trans  &trans       &trans       &trans         &trans       &trans       &trans             &trans         &trans  &trans
-&trans  &trans  &trans  &trans       &trans       &trans         &trans       &trans       &kp LC(BACKSPACE)  &kp BACKSPACE  &trans  &trans
-&trans  &trans  &trans  &trans       &trans       &trans         &trans       &trans       &trans             &trans         &trans  &trans
-                        &leave_func  &leave_func  &leave_func    &leave_func  &leave_func  &leave_func
+&none  &none  &kp W  &kp F  &kp P      &kp G          &kp J      &kp L      &kp U  &kp Y  &none          &none
+&none  &kp A  &kp R  &kp S  &kp T      &kp D          &kp H      &kp N      &kp E  &kp I  &kp O          &none
+&none  &kp Q  &kp Z  &kp C  &kp V      &kp B          &kp K      &kp M      &kp X  &dot   &kp SEMICOLON  &none
+                     &to 0  &kp SPACE  &ht_lyr 0 0    &kp SPACE  &kp SPACE  &to 0
             >;
         };
 
@@ -484,7 +461,7 @@
             bindings = <
 &none  &none                             &none             &none                             &ht_sk LEFT_META LEFT_META          &none           &none         &ht_sk LEFT_META LEFT_META           &none                             &none                 &none                             &none
 &none  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &ht_sk LALT LALT  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LC(LA(LSHFT)) LC(LA(LSHFT))  &kt LEFT_ALT    &kt LEFT_ALT  &ht_sk LA(LC(LSHFT)) LA(LC(LSHIFT))  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LEFT_ALT LALT  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &none
-&none  &none                             &to 6             &to 7                             &to 9                               &to 20          &to 20        &to 9                                &to 7                             &to 6                 &none                             &none
+&none  &none                             &to 6             &to 7                             &to 9                               &to 19          &to 19        &to 9                                &to 7                             &to 6                 &none                             &none
                                                            &ht_lyr 8 8                       &trans                              &trans          &trans        &trans                               &ht_lyr 8 8
             >;
         };
@@ -492,9 +469,9 @@
         mouse {
             bindings = <
 &to 0      &off_mouse   &kp W            &kp X       &kp Y      &none                 &none          &none          &kt LSHFT  &none  &none  &none
-&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 17 17  &kp N          &kp E      &kp I  &kp O  &tog 17
+&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 15 15  &kp N          &kp E      &kp I  &kp O  &tog 16
 &kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)   &kp LC(V)  &none                 &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
-                                         &tog_mouse  &kp SPACE  &ht_k_lyr 18 SPACE    &none          &none          &none
+                                         &tog_mouse  &kp SPACE  &ht_k_lyr 17 SPACE    &none          &none          &none
             >;
         };
 
@@ -510,9 +487,9 @@
         mouse_locked {
             bindings = <
 &to 0      &off_mouse   &kp W            &kp X       &kp Y      &none                 &none          &none          &kt LSHFT  &none  &none  &none
-&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 17 17  &kp N          &kp E      &kp I  &kp O  &tog 17
+&kt SPACE  &kp A        &kp R            &kp S       &mt Y T    &kp F                 &ht_lyr 16 16  &kp N          &kp E      &kp I  &kp O  &tog 16
 &kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)   &kp LC(V)  &none                 &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
-                                         &off_mouse  &kp SPACE  &ht_k_lyr 18 SPACE    &none          &none          &none
+                                         &off_mouse  &kp SPACE  &ht_k_lyr 17 SPACE    &none          &none          &none
             >;
         };
 
@@ -566,18 +543,18 @@
         compatible = "zmk,conditional-layers";
 
         mouse_slow_helper_1 {
-            if-layers = <17 13>;
-            then-layer = <16>;
+            if-layers = <16 13>;
+            then-layer = <15>;
         };
 
         mouse_slow_helper_2 {
-            if-layers = <17 15>;
-            then-layer = <16>;
+            if-layers = <16 14>;
+            then-layer = <15>;
         };
 
         mouse_locked_helper_ {
-            if-layers = <0 14>;
-            then-layer = <15>;
+            if-layers = <12 13>;
+            then-layer = <14>;
         };
     };
 };
