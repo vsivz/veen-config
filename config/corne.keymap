@@ -341,10 +341,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp LS(LC(LG(D)))  &ht_lyr 4 4  &kp W           &kp F                &kp P              &kp G    &kp J        &kp L               &kp U                 &kp Y            &none          &kp RCTRL
-&kp RALT           &kp A        &left_hrm2 3 R  &left_hrm_3 LCTRL S  &left_hrm LSHFT T  &kp D    &kp H        &right_hrm LSHFT N  &right_hrm_3 LCTRL E  &right_hrm2 3 I  &kp O          &kp RALT
-&kp LEFT_GUI       &kp Q        &kp Z           &kp C                &kp V              &kp B    &kp K        &kp M               &kp X                 &dot             &kp SEMICOLON  &kp LEFT_GUI
-                                                &ht_lyr 11 11        &ht_mtab 0 SPACE   &kp C    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 11 11
+&kp LS(LC(LG(D)))  &none  &kp W           &kp F                &kp P              &kp G          &kp J        &kp L               &kp U                 &kp Y            &none          &kp RCTRL
+&kp RALT           &kp A  &left_hrm2 3 R  &left_hrm_3 LCTRL S  &left_hrm LSHFT T  &kp D          &kp H        &right_hrm LSHFT N  &right_hrm_3 LCTRL E  &right_hrm2 3 I  &kp O          &kp RALT
+&kp LEFT_GUI       &kp Q  &kp Z           &kp C                &kp V              &kp B          &kp K        &kp M               &kp X                 &dot             &kp SEMICOLON  &kp LEFT_GUI
+                                          &ht_lyr 11 11        &ht_mtab 0 SPACE   &ht_lyr 1 4    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 11 11
             >;
         };
 
@@ -386,7 +386,7 @@
 &none  &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)     &cpln                    &sret          &kp END   &kp HOME  &none
 &none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DELETE)  &kp RET                  &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
 &none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE      &kp LG(LS(PRINTSCREEN))  &kp LC(LA(T))  &end_ret  &selline  &none
-                                     &kp LMETA     &to 0          &mo 6              &switch_mouse   &switch_mouse            &kp RALT
+                                     &kp LMETA     &to 0          &mo 5              &switch_mouse   &switch_mouse            &kp RALT
             >;
         };
 
@@ -456,7 +456,7 @@
         mouse {
             bindings = <
 &to 0      &off_mouse   &none            &kp F      &none      &none                 &none          &none          &kt LSHFT  &none  &none  &none
-&kt SPACE  &kp A        &kp R            &kp S      &mt Y T    &kp LEFT_SHIFT        &ht_lyr 14 14  &kp N          &kp E      &kp I  &kp O  &tog 14
+&kt SPACE  &kp A        &kp R            &kp S      &mt Y T    &kp LEFT_SHIFT        &ht_lyr 15 15  &kp N          &kp E      &kp I  &kp O  &tog 15
 &kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)  &kp LC(V)  &none                 &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
                                          &none      &kp SPACE  &ht_k_lyr 13 SPACE    &none          &none          &none
             >;
@@ -504,12 +504,12 @@
 
         mouse_func_helper {
             if-layers = <14 12>;
-            then-layer = <15>;
+            then-layer = <6>;
         };
 
         function_helper {
             if-layers = <6>;
-            then-layer = <4>;
+            then-layer = <14>;
         };
     };
 };
