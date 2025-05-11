@@ -364,9 +364,6 @@
     };
 
 
-    input_processors {
-        /* optional: custom processors here */
-    };
 
     &mmv_input_listener {
         /* default speed */
@@ -378,7 +375,7 @@
         };
     };
 
-keymap {
+    keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
