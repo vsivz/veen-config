@@ -21,16 +21,15 @@
 #define FUNC_2 4
 #define QWERTY 5
 
+/*
 &mmv_input_listener {
-    /* default speed */
-
     input-processors = <&zip_xy_scaler 1 1>;
 
     slowMode {
         layers = <18>;
         input-processors = <&zip_xy_scaler 1 2>;
     };
-};
+}; */
 
 / {
     behaviors {
