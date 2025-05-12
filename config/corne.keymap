@@ -4,17 +4,15 @@
  * SPDX-License-Identifier: MIT
  */
 
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 900  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 18   // default: 10
+
+#include <input/processors.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
-
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 900  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 18   // default: 10
-
 #include <dt-bindings/zmk/pointing.h>
-#include <input/processors.dtsi>
-
 
 #define MAIN 0
 #define NAV 1
@@ -23,16 +21,16 @@
 #define FUNC_2 4
 #define QWERTY 5
 
-    &mmv_input_listener {
-        /* default speed */
-        input-processors = <&zip_xy_scaler 1 1>;
+&mmv_input_listener {
+    /* default speed */
 
-        slowMode {
-        layers           = <18>;
+    input-processors = <&zip_xy_scaler 1 1>;
+
+    slowMode {
+        layers = <18>;
         input-processors = <&zip_xy_scaler 1 2>;
-        };
     };
-
+};
 
 / {
     behaviors {
@@ -358,7 +356,13 @@
         func_hold: func_hold {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &to 4>, <&macro_pause_for_release>, <&to 0>;
+            bindings =
+                <&to 0>,
+                <&macro_press>,
+                <&mo 4>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&mo 4>;
 
             label = "FUNC_HOLD";
         };
@@ -374,203 +378,200 @@
         };
     };
 
-
-
-
     keymap {
-                compatible = "zmk,keymap";
+        compatible = "zmk,keymap";
 
-                default_layer {
-                    // -----------------------------------------------------------------------------------------
-                    // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-                    // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-                    // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-                    //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+        default_layer {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
-                    bindings = <
-        &kp LS(LC(LG(D)))  &none  &kp W           &kp F                &kp P              &kp G          &kp J        &kp L               &kp U                 &kp Y            &none          &kp RCTRL
-        &kp RALT           &kp A  &left_hrm2 3 R  &left_hrm_3 LCTRL S  &left_hrm LSHFT T  &kp D          &kp H        &right_hrm LSHFT N  &right_hrm_3 LCTRL E  &right_hrm2 3 I  &kp O          &kp RALT
-        &kp LEFT_GUI       &kp Q  &kp Z           &kp C                &kp V              &kp B          &kp K        &kp M               &kp X                 &dot             &kp SEMICOLON  &kp LEFT_GUI
-                                                &ht_lyr 11 11        &ht_mtab 0 SPACE   &ht_lyr 1 4    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 11 11
-                    >;
-                };
+            bindings = <
+&kp LS(LC(LG(D)))  &none  &kp W           &kp F                &kp P              &kp G          &kp J        &kp L               &kp U                 &kp Y            &none          &kp RCTRL
+&kp RALT           &kp A  &left_hrm2 3 R  &left_hrm_3 LCTRL S  &left_hrm LSHFT T  &kp D          &kp H        &right_hrm LSHFT N  &right_hrm_3 LCTRL E  &right_hrm2 3 I  &kp O          &kp RALT
+&kp LEFT_GUI       &kp Q  &kp Z           &kp C                &kp V              &kp B          &kp K        &kp M               &kp X                 &dot             &kp SEMICOLON  &kp LEFT_GUI
+                                          &ht_lyr 11 11        &ht_mtab 0 SPACE   &ht_lyr 1 4    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 11 11
+            >;
+        };
 
-                numbers {
-                    // -----------------------------------------------------------------------------------------
-                    // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-                    // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-                    // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-                    //                    | GUI |     | SPC |   | ENT |     | ALT |
+        numbers {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
+            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
 
-                    bindings = <
-        &none  &kp DOT  &kp MINUS       &kp LS(PLUS)  &kp LS(UNDER)  &none            &none      &none          &end_ret  &none   &kp COLON  &none
-        &none  &kp N0   &kp N1          &kp N2        &kp N3         &kp N4           &kp N5     &kp N6         &kp N7    &kp N8  &kp N9     &none
-        &none  &none    &kp LEFT_ARROW  &kp RIGHT     &kp DELETE     &kp BACKSPACE    &kp FSLH   &kp LA(SPACE)  &kp X     &dot    &kp COLON  &none
-                                        &none         &to 0          &kp SPACE        &kp SPACE  &to 0          &none
-                    >;
-                };
+            bindings = <
+&none  &kp DOT  &kp MINUS       &kp LS(PLUS)  &kp LS(UNDER)  &none            &none      &none          &end_ret  &none   &kp COLON  &none
+&none  &kp N0   &kp N1          &kp N2        &kp N3         &kp N4           &kp N5     &kp N6         &kp N7    &kp N8  &kp N9     &none
+&none  &none    &kp LEFT_ARROW  &kp RIGHT     &kp DELETE     &kp BACKSPACE    &kp FSLH   &kp LA(SPACE)  &kp X     &dot    &kp COLON  &none
+                                &none         &to 0          &kp SPACE        &kp SPACE  &to 0          &none
+            >;
+        };
 
-                navigation {
-                    bindings = <
-        &none  &none               &kp LG(LC(LS(T)))  &kp LG(LC(LS(Q)))   &kp LG(RET)    &af4                 &on_MSTab             &on_MTab            &kp LG(H)                    &kp LG(F)               &none              &none
-        &none  &kp LG(LC(LS(J)))   &kp LS(LC(LG(H)))  &kp LG(LA(J))       &kp LA(LG(H))  &kp LG(LC(LS(R)))    &kp LG(LC(UP_ARROW))  &kp LS(LC(LG(Z)))   &kp LG(LC(RIGHT))            &kp LG(LS(LEFT_ARROW))  &kp LS(LG(RIGHT))  &none
-        &none  &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)   &kp LG(LEFT_ARROW)  &kp LG(RIGHT)  &kp LG(F5)           &kp LG(F6)            &kp LC(LG(LS(UP)))  &kp LC(LG(LS(RIGHT_ARROW)))  &kp LC(END)             &kp LC(HOME)       &none
-                                                    &none               &none          &none                &none                 &none               &none
-                    >;
-                };
+        navigation {
+            bindings = <
+&none  &none               &kp LG(LC(LS(T)))  &kp LG(LC(LS(Q)))   &kp LG(RET)    &af4                 &on_MSTab             &on_MTab            &kp LG(H)                    &kp LG(F)               &none              &none
+&none  &kp LG(LC(LS(J)))   &kp LS(LC(LG(H)))  &kp LG(LA(J))       &kp LA(LG(H))  &kp LG(LC(LS(R)))    &kp LG(LC(UP_ARROW))  &kp LS(LC(LG(Z)))   &kp LG(LC(RIGHT))            &kp LG(LS(LEFT_ARROW))  &kp LS(LG(RIGHT))  &none
+&none  &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)   &kp LG(LEFT_ARROW)  &kp LG(RIGHT)  &kp LG(F5)           &kp LG(F6)            &kp LC(LG(LS(UP)))  &kp LC(LG(LS(RIGHT_ARROW)))  &kp LC(END)             &kp LC(HOME)       &none
+                                              &none               &none          &none                &none                 &none               &none
+            >;
+        };
 
-                symbols {
-                    bindings = <
-        &none  &kp GRAVE      &kp AMPERSAND    &kp ASTRK    &kp TILDE       &kp QUESTION         &kp BSLH       &kp PIPE   &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none
-        &none  &kp EQUAL      &kp UNDER        &kp CARET    &kp APOSTROPHE  &kp DOUBLE_QUOTES    &kp SLASH      &kp MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PLUS          &none
-        &none  &kp LESS_THAN  &kp EXCLAMATION  &kp AT       &kp PERCENT     &kp GRAVE            &kp DOLLAR     &kp HASH   &kp LBKT              &kp RBKT               &kp GREATER_THAN  &none
-                                            &ht_lyr 8 8  &none           &ht_lyr 11 11        &ht_lyr 11 11  &none      &ht_lyr 8 8
-                    >;
-                };
+        symbols {
+            bindings = <
+&none  &kp GRAVE      &kp AMPERSAND    &kp ASTRK    &kp TILDE       &kp QUESTION         &kp BSLH       &kp PIPE   &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none
+&none  &kp EQUAL      &kp UNDER        &kp CARET    &kp APOSTROPHE  &kp DOUBLE_QUOTES    &kp SLASH      &kp MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PLUS          &none
+&none  &kp LESS_THAN  &kp EXCLAMATION  &kp AT       &kp PERCENT     &kp GRAVE            &kp DOLLAR     &kp HASH   &kp LBKT              &kp RBKT               &kp GREATER_THAN  &none
+                                       &ht_lyr 8 8  &none           &ht_lyr 11 11        &ht_lyr 11 11  &none      &ht_lyr 8 8
+            >;
+        };
 
-                functions {
-                    bindings = <
-        &none  &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)     &cpln                    &sret          &kp END   &kp HOME  &none
-        &none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DELETE)  &kp RET                  &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
-        &none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE      &kp LG(LS(PRINTSCREEN))  &kp LC(LA(T))  &end_ret  &selline  &none
-                                            &kp LMETA     &to 0          &func_hold         &mo 17          &mo 17                   &kp RALT
-                    >;
-                };
+        functions {
+            bindings = <
+&none  &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)     &cpln                    &sret          &kp END   &kp HOME  &none
+&none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DELETE)  &kp RET                  &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
+&none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE      &kp LG(LS(PRINTSCREEN))  &kp LC(LA(T))  &end_ret  &selline  &none
+                                     &kp LMETA     &to 0          &func_hold         &mo 17          &mo 17                   &kp RALT
+            >;
+        };
 
-                functions2 {
-                    bindings = <
-        &none  &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)  &cpln                    &sret          &kp END   &kp HOME  &none
-        &none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DEL)  &kp RET                  &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
-        &none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE   &kp LG(LS(PRINTSCREEN))  &kp LC(LA(T))  &end_ret  &selline  &none
-                                            &kp LMETA     &to 0          &trans             &trans       &none                    &kp RALT
-                    >;
-                };
+        functions2 {
+            bindings = <
+&none  &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)  &cpln                    &sret          &kp END   &kp HOME  &none
+&none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DEL)  &kp RET                  &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
+&none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE   &kp LG(LS(PRINTSCREEN))  &kp LC(LA(T))  &end_ret  &selline  &none
+                                     &kp LMETA     &to 0          &trans             &trans       &none                    &kp RALT
+            >;
+        };
 
-                func_helper {
-                    bindings = <
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans  &trans    &none   &none   &trans
-                    >;
-                };
+        func_helper {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &none   &none   &trans
+            >;
+        };
 
-                qwerty {
-                    bindings = <
-        &kp TAB    &kp Q  &kp W  &kp E  &kp R      &kp T        &kp Y      &kp U     &kp I      &kp O    &kp P     &kp BSPC
-        &kp CAPS   &kp A  &kp S  &kp D  &kp F      &kp G        &kp H      &kp J     &kp K      &kp L    &kp SEMI  &kp ENTER
-        &kp LSHFT  &kp Z  &kp X  &kp C  &kp V      &kp B        &kp N      &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                                &to 0  &kp LCTRL  &kp SPACE    &kp SPACE  &kp LALT  &kp LMETA
-                    >;
-                };
+        qwerty {
+            bindings = <
+&kp TAB    &kp Q  &kp W  &kp E  &kp R      &kp T        &kp Y      &kp U     &kp I      &kp O    &kp P     &kp BSPC
+&kp CAPS   &kp A  &kp S  &kp D  &kp F      &kp G        &kp H      &kp J     &kp K      &kp L    &kp SEMI  &kp ENTER
+&kp LSHFT  &kp Z  &kp X  &kp C  &kp V      &kp B        &kp N      &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                         &to 0  &kp LCTRL  &kp SPACE    &kp SPACE  &kp LALT  &kp LMETA
+            >;
+        };
 
-                system {
-                    bindings = <
-        &bootloader   &kp F1      &kp F2      &kp F3           &kp F4             &kp F5       &kp F6     &kp F7        &kp F8              &kp F9                    &kp F10                   &bootloader
-        &out OUT_TOG  &kp K_MUTE  &kp K_PREV  &kp K_NEXT       &kp K_PLAY_PAUSE   &none        &none      &kp C_REWIND  &kp C_FAST_FORWARD  &kp C_BRI_INC             &kp C_BRI_DEC             &out OUT_TOG
-        &sys_reset    &kp F11     &kp F12     &kp C_VOLUME_UP  &kp C_VOLUME_DOWN  &soft_off    &soft_off  &none         &none               &kp C_BRIGHTNESS_MINIMUM  &kp C_BRIGHTNESS_MAXIMUM  &sys_reset
-                                            &none            &none              &to 0        &to 0      &none         &none
-                    >;
-                };
+        system {
+            bindings = <
+&bootloader   &kp F1      &kp F2      &kp F3           &kp F4             &kp F5       &kp F6     &kp F7        &kp F8              &kp F9                    &kp F10                   &bootloader
+&out OUT_TOG  &kp K_MUTE  &kp K_PREV  &kp K_NEXT       &kp K_PLAY_PAUSE   &none        &none      &kp C_REWIND  &kp C_FAST_FORWARD  &kp C_BRI_INC             &kp C_BRI_DEC             &out OUT_TOG
+&sys_reset    &kp F11     &kp F12     &kp C_VOLUME_UP  &kp C_VOLUME_DOWN  &soft_off    &soft_off  &none         &none               &kp C_BRIGHTNESS_MINIMUM  &kp C_BRIGHTNESS_MAXIMUM  &sys_reset
+                                      &none            &none              &to 0        &to 0      &none         &none
+            >;
+        };
 
-                plaintext {
-                    bindings = <
-        &none  &none  &kp W  &kp F  &kp P      &kp G          &kp J      &kp L      &kp U  &kp Y  &none          &none
-        &none  &kp A  &kp R  &kp S  &kp T      &kp D          &kp H      &kp N      &kp E  &kp I  &kp O          &none
-        &none  &kp Q  &kp Z  &kp C  &kp V      &kp B          &kp K      &kp M      &kp X  &dot   &kp SEMICOLON  &none
-                            &to 0  &kp SPACE  &ht_lyr 0 0    &kp SPACE  &kp SPACE  &to 0
-                    >;
-                };
+        plaintext {
+            bindings = <
+&none  &none  &kp W  &kp F  &kp P      &kp G          &kp J      &kp L      &kp U  &kp Y  &none          &none
+&none  &kp A  &kp R  &kp S  &kp T      &kp D          &kp H      &kp N      &kp E  &kp I  &kp O          &none
+&none  &kp Q  &kp Z  &kp C  &kp V      &kp B          &kp K      &kp M      &kp X  &dot   &kp SEMICOLON  &none
+                     &to 0  &kp SPACE  &ht_lyr 0 0    &kp SPACE  &kp SPACE  &to 0
+            >;
+        };
 
-                tab_helper {
-                    bindings = <
-        &trans  &trans  &trans  &trans  &kp LG(H)  &af4      &kp LS(TAB)  &kp TAB  &trans   &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans     &trans    &STab_2      &Tab_2   &trans   &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans     &trans    &trans       &trans   &trans   &trans  &trans  &trans
-                                &none   &none      &none     &kp ESC      &kp ESC  &kp ESC
-                    >;
-                };
+        tab_helper {
+            bindings = <
+&trans  &trans  &trans  &trans  &kp LG(H)  &af4      &kp LS(TAB)  &kp TAB  &trans   &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans     &trans    &STab_2      &Tab_2   &trans   &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans     &trans    &trans       &trans   &trans   &trans  &trans  &trans
+                        &none   &none      &none     &kp ESC      &kp ESC  &kp ESC
+            >;
+        };
 
-                modifier {
-                    bindings = <
-        &none  &none                             &none             &none                             &ht_sk LEFT_META LEFT_META          &none           &none         &ht_sk LEFT_META LEFT_META           &none                             &none                 &none                             &none
-        &none  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &ht_sk LALT LALT  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LC(LA(LSHFT)) LC(LA(LSHFT))  &kt LEFT_ALT    &kt LEFT_ALT  &ht_sk LA(LC(LSHFT)) LA(LC(LSHIFT))  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LEFT_ALT LALT  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &none
-        &none  &none                             &to 7             &none                             &to 9                               &to 16          &to 16        &to 9                                &none                             &to 7                 &none                             &none
-                                                                &ht_lyr 8 8                       &trans                              &trans          &trans        &trans                               &ht_lyr 8 8
-                    >;
-                };
+        modifier {
+            bindings = <
+&none  &none                             &none             &none                             &ht_sk LEFT_META LEFT_META          &none           &none         &ht_sk LEFT_META LEFT_META           &none                             &none                 &none                             &none
+&none  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &ht_sk LALT LALT  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LC(LA(LSHFT)) LC(LA(LSHFT))  &kt LEFT_ALT    &kt LEFT_ALT  &ht_sk LA(LC(LSHFT)) LA(LC(LSHIFT))  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LEFT_ALT LALT  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &none
+&none  &none                             &to 7             &none                             &to 9                               &to 16          &to 16        &to 9                                &none                             &to 7                 &none                             &none
+                                                           &ht_lyr 8 8                       &trans                              &trans          &trans        &trans                               &ht_lyr 8 8
+            >;
+        };
 
-                mouse_old {
-                    bindings = <
-        &to 0      &off_mouse   &none            &kp F      &none      &none                 &none          &none          &kt LSHFT  &none  &none  &none
-        &kt SPACE  &kp A        &kp R            &kp S      &mt Y T    &kp LEFT_SHIFT        &ht_lyr 15 15  &kp N          &kp E      &kp I  &kp O  &tog 15
-        &kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)  &kp LC(V)  &none                 &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
-                                                &none      &kp SPACE  &ht_k_lyr 13 SPACE    &none          &none          &none
-                    >;
-                };
+        mouse_old {
+            bindings = <
+&to 0      &off_mouse   &none            &kp F      &none      &none                 &none          &none          &kt LSHFT  &none  &none  &none
+&kt SPACE  &kp A        &kp R            &kp S      &mt Y T    &kp LEFT_SHIFT        &ht_lyr 15 15  &kp N          &kp E      &kp I  &kp O  &tog 15
+&kp G      &kp LC(TAB)  &kp LC(LS(TAB))  &kp LC(C)  &kp LC(V)  &none                 &none          &kp SEMICOLON  &kp D      &kp C  &kp Z  &none
+                                         &none      &kp SPACE  &ht_k_lyr 13 SPACE    &none          &none          &none
+            >;
+        };
 
-                mouse_slow_old {
-                    bindings = <
-        &trans  &trans  &trans     &trans     &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans
-        &trans  &trans  &kp LS(R)  &kp LS(S)  &trans  &trans    &trans  &kp COLON  &kp D   &kp C   &kp Z   &trans
-        &trans  &trans  &trans     &trans     &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans
-                                &trans     &trans  &trans    &trans  &trans     &trans
-                    >;
-                };
+        mouse_slow_old {
+            bindings = <
+&trans  &trans  &trans     &trans     &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans
+&trans  &trans  &kp LS(R)  &kp LS(S)  &trans  &trans    &trans  &kp COLON  &kp D   &kp C   &kp Z   &trans
+&trans  &trans  &trans     &trans     &trans  &trans    &trans  &trans     &trans  &trans  &trans  &trans
+                           &trans     &trans  &trans    &trans  &trans     &trans
+            >;
+        };
 
-                mouse_func_helper {
-                    bindings = <
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                    >;
-                };
+        mouse_func_helper {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
 
-                mouse_funcs_old {
-                    bindings = <
-        &trans  &trans           &trans            &kp LG(F6)  &trans      &trans    &trans    &kp LALT       &kp LSHFT  &kp LCTRL  &trans  &trans
-        &trans  &left_mousemove  &right_mousemove  &kp LG(F5)  &mousemove  &trans    &trans    &trans         &trans     &trans     &trans  &trans
-        &trans  &kp LC(TAB)      &kp LS(LC(TAB))   &kp LC(C)   &kp LC(V)   &trans    &trans    &trans         &trans     &trans     &trans  &trans
-                                                &kt Y       &kt W       &kt X     &kt LGUI  &kt LG(LCTRL)  &kt LGUI
-                    >;
-                };
+        mouse_funcs_old {
+            bindings = <
+&trans  &trans           &trans            &kp LG(F6)  &trans      &trans    &trans    &kp LALT       &kp LSHFT  &kp LCTRL  &trans  &trans
+&trans  &left_mousemove  &right_mousemove  &kp LG(F5)  &mousemove  &trans    &trans    &trans         &trans     &trans     &trans  &trans
+&trans  &kp LC(TAB)      &kp LS(LC(TAB))   &kp LC(C)   &kp LC(V)   &trans    &trans    &trans         &trans     &trans     &trans  &trans
+                                           &kt Y       &kt W       &kt X     &kt LGUI  &kt LG(LCTRL)  &kt LGUI
+            >;
+        };
 
-                bluetooth {
-                    bindings = <
-        &none  &bt BT_CLR     &bt BT_CLR_ALL  &none          &none  &none    &none  &none  &none  &none  &none  &none
-        &none  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2   &none  &none    &none  &none  &none  &none  &none  &none
-        &none  &bt BT_DISC 0  &bt BT_DISC 1   &bt BT_DISC 2  &none  &none    &none  &none  &none  &none  &none  &none
-                                            &none          &none  &to 0    &to 0  &none  &none
-                    >;
-                };
+        bluetooth {
+            bindings = <
+&none  &bt BT_CLR     &bt BT_CLR_ALL  &none          &none  &none    &none  &none  &none  &none  &none  &none
+&none  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2   &none  &none    &none  &none  &none  &none  &none  &none
+&none  &bt BT_DISC 0  &bt BT_DISC 1   &bt BT_DISC 2  &none  &none    &none  &none  &none  &none  &none  &none
+                                      &none          &none  &to 0    &to 0  &none  &none
+            >;
+        };
 
-                mouse {
-                    bindings = <
-        &trans            &trans  &trans          &mkp MCLK        &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
-        &click_hold LCLK  &trans  &msc SCRL_DOWN  &msc SCRL_UP     &mkp RCLK  &trans                 &ht_lyr 19 19  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
-        &trans            &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
-                                                &trans           &mkp LCLK  &ht_mkp_lyr 18 LCLK    &trans         &trans          &trans
-                    >;
-                };
+        mouse {
+            bindings = <
+&trans            &trans  &trans          &mkp MCLK        &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
+&click_hold LCLK  &trans  &msc SCRL_DOWN  &msc SCRL_UP     &mkp RCLK  &trans                 &ht_lyr 19 19  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
+&trans            &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
+                                          &trans           &mkp LCLK  &ht_mkp_lyr 18 LCLK    &trans         &trans          &trans
+            >;
+        };
 
-                mouse_slow {
-                    bindings = <
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                    >;
-                };
+        mouse_slow {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
 
-                mouse_funcs {
-                    bindings = <
-        &trans  &trans           &trans            &kp LG(F6)  &trans      &trans    &trans  &kp LALT       &kp LSHFT  &kp LCTRL  &trans  &trans
-        &trans  &left_mousemove  &right_mousemove  &kp LG(F5)  &mousemove  &trans    &trans  &trans         &trans     &trans     &trans  &trans
-        &trans  &kp LC(TAB)      &kp LS(LC(TAB))   &kp LC(C)   &kp LC(V)   &trans    &trans  &trans         &trans     &trans     &trans  &trans
-                                                &trans      &trans      &trans    &trans  &kt LG(LCTRL)  &kt LGUI
-                    >;
-                };
+        mouse_funcs {
+            bindings = <
+&trans  &trans           &trans            &kp LG(F6)  &trans      &trans    &trans  &kp LALT       &kp LSHFT  &kp LCTRL  &trans  &trans
+&trans  &left_mousemove  &right_mousemove  &kp LG(F5)  &mousemove  &trans    &trans  &trans         &trans     &trans     &trans  &trans
+&trans  &kp LC(TAB)      &kp LS(LC(TAB))   &kp LC(C)   &kp LC(V)   &trans    &trans  &trans         &trans     &trans     &trans  &trans
+                                           &trans      &trans      &trans    &trans  &kt LG(LCTRL)  &kt LGUI
+            >;
+        };
     };
 
     conditional_layers {
