@@ -29,7 +29,18 @@
         input-processors = <&zip_xy_scaler 1 2>;
     };
 };
+&mk_scroll_down {
+    behavior = &scroll_down;
+    delay-ms = <0>;
+    repeat-ms = <10>;
+};
 
+// Scroll up (hold to scroll faster)
+&mk_scroll_up {
+    behavior = &scroll_up;
+    delay-ms = <0>;
+    repeat-ms = <10>;
+};
 / {
     behaviors {
         dot: dot {
