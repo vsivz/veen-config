@@ -505,9 +505,9 @@
 
         mouse {
             bindings = <
-&trans       &trans                       &trans               &mkp MCLK             &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
-&click_hold  &fast_scroll_down MOVE_DOWN  &msc MOVE_DOWN(500)  &msc MOVE_UP(500)     &mkp RCLK  &trans                 &ht_lyr 13 13  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
-&trans       &trans                       &msc SCRL_LEFT       &msc SCRL_RIGHT       &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
+&trans       &trans                       &trans          &mkp MCLK        &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
+&click_hold  &fast_scroll_down MOVE_DOWN  &msc MOVE_DOWN  &msc MOVE_UP     &mkp RCLK  &trans                 &ht_lyr 13 13  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
+&trans       &trans                       &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
                                                           &trans           &mkp LCLK  &ht_mkp_lyr 12 LCLK    &trans         &trans          &trans
             >;
         };
