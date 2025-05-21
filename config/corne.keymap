@@ -253,14 +253,14 @@
         on_MTab: on_MTab {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt LEFT_META &tog 8 &kp TAB>;
+            bindings = <&kt LEFT_META &tog 9 &kp TAB>;
             label = "ON_MTAB";
         };
 
         on_MSTab: on_MSTab {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt LEFT_META &tog 8 &kp LS(TAB)>;
+            bindings = <&kt LEFT_META &tog 9 &kp LS(TAB)>;
             label = "ON_MSTAB";
         };
 
@@ -365,7 +365,7 @@
         click_hold: click_hold {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&tog 13>, <&macro_press>, <&mkp LCLK>;
+            bindings = <&tog 14>, <&macro_press>, <&mkp LCLK>;
 
             label = "CLICK_HOLD";
         };
@@ -373,7 +373,7 @@
         click_release: click_release {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&tog 13>, <&macro_release>, <&mkp LCLK>;
+            bindings = <&tog 14>, <&macro_release>, <&mkp LCLK>;
 
             label = "CLICK_RELEASE";
         };
@@ -393,12 +393,11 @@
         compatible = "zmk,keymap";
 
         default_layer {
-
             bindings = <
 &kp LS(LC(LG(D)))  &none  &kp W           &kp F                &kp P              &kp G          &kp J        &kp L               &kp U                 &kp Y            &none          &kp RCTRL
 &kp RALT           &kp A  &left_hrm2 3 R  &left_hrm_3 LCTRL S  &left_hrm LSHFT T  &kp D          &kp H        &right_hrm LSHFT N  &right_hrm_3 LCTRL E  &right_hrm2 3 I  &kp O          &kp RALT
 &kp LEFT_GUI       &kp Q  &kp Z           &kp C                &kp V              &kp B          &kp K        &kp M               &kp X                 &dot             &kp SEMICOLON  &kp LEFT_GUI
-                                          &ht_lyr 9 9          &ht_mtab 0 SPACE   &ht_lyr 1 4    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 9 9
+                                          &ht_lyr 6 6          &ht_mtab 0 SPACE   &ht_lyr 1 4    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 6 6
             >;
         };
 
@@ -428,10 +427,10 @@
 
         symbols {
             bindings = <
-&none  &kp GRAVE      &kp AMPERSAND    &kp ASTRK    &kp TILDE       &kp QUESTION         &kp BSLH     &kp PIPE   &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none
-&none  &kp EQUAL      &kp UNDER        &kp CARET    &kp APOSTROPHE  &kp DOUBLE_QUOTES    &kp SLASH    &kp MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PLUS          &none
-&none  &kp LESS_THAN  &kp EXCLAMATION  &kp AT       &kp PERCENT     &kp GRAVE            &kp DOLLAR   &kp HASH   &kp LBKT              &kp RBKT               &kp GREATER_THAN  &none
-                                       &ht_lyr 7 7  &none           &ht_lyr 9 9          &ht_lyr 9 9  &none      &ht_lyr 7 7
+&none  &kp GRAVE      &kp AMPERSAND    &kp ASTRK    &kp TILDE       &kp QUESTION         &kp BSLH       &kp PIPE   &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none
+&none  &kp EQUAL      &kp UNDER        &kp CARET    &kp APOSTROPHE  &kp DOUBLE_QUOTES    &kp SLASH      &kp MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PLUS          &none
+&none  &kp LESS_THAN  &kp EXCLAMATION  &kp AT       &kp PERCENT     &kp GRAVE            &kp DOLLAR     &kp HASH   &kp LBKT              &kp RBKT               &kp GREATER_THAN  &none
+                                       &ht_lyr 8 8  &none           &ht_lyr 10 10        &ht_lyr 10 10  &none      &ht_lyr 8 8
             >;
         };
 
@@ -440,7 +439,7 @@
 &none  &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)     &cpln                    &sret          &kp END   &kp HOME  &none
 &none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DELETE)  &kp RET                  &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
 &none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE      &kp LG(LS(PRINTSCREEN))  &kp LC(LA(T))  &end_ret  &selline  &none
-                                     &kp LMETA     &to 0          &mo 5              &mo 11          &mo 11                   &kp RALT
+                                     &kp LMETA     &to 0          &mo 5              &mo 12          &mo 12                   &kp RALT
             >;
         };
 
@@ -450,6 +449,15 @@
 &none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DEL)  &kp RET                  &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
 &none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE   &kp LG(LS(PRINTSCREEN))  &kp LC(LA(T))  &end_ret  &selline  &none
                                      &kp LMETA     &to 0          &none              &none        &none                    &kp RALT
+            >;
+        };
+
+        in_app_functions {
+            bindings = <
+&none  &none   &none   &none               &none                     &none    &none  &none          &none          &none  &none  &none
+&none  &kp N1  &kp N2  &kp LS(LA(LC(N3)))  &kp LS(LC(LA(NUMBER_4)))  &none    &none  &kp LS(LC(A))  &none          &none  &none  &none
+&none  &none   &none   &none               &none                     &none    &none  &none          &none          &none  &none  &none
+                       &ht_lyr 10 10       &none                     &none    &none  &none          &ht_lyr 10 10
             >;
         };
 
@@ -484,8 +492,8 @@
             bindings = <
 &none  &none                             &none             &none                             &ht_sk LEFT_META LEFT_META          &none           &none         &ht_sk LEFT_META LEFT_META           &none                             &none                 &none                             &none
 &none  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &ht_sk LALT LALT  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LC(LA(LSHFT)) LC(LA(LSHFT))  &kt LEFT_ALT    &kt LEFT_ALT  &ht_sk LA(LC(LSHFT)) LA(LC(LSHIFT))  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LEFT_ALT LALT  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &none
-&none  &none                             &to 0             &none                             &to 8                               &to 10          &to 10        &to 8                                &none                             &to 0                 &none                             &none
-                                                           &ht_lyr 7 7                       &trans                              &trans          &trans        &trans                               &ht_lyr 7 7
+&none  &none                             &to 0             &none                             &to 9                               &to 11          &to 11        &to 9                                &none                             &to 0                 &none                             &none
+                                                           &ht_lyr 8 8                       &trans                              &trans          &trans        &trans                               &ht_lyr 8 8
             >;
         };
 
@@ -501,9 +509,9 @@
         mouse {
             bindings = <
 &trans       &trans                       &trans          &mkp MCLK        &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
-&click_hold  &fast_scroll_down MOVE_DOWN  &msc MOVE_DOWN  &msc MOVE_UP     &mkp RCLK  &trans                 &ht_lyr 12 12  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
+&click_hold  &fast_scroll_down MOVE_DOWN  &msc MOVE_DOWN  &msc MOVE_UP     &mkp RCLK  &trans                 &ht_lyr 13 13  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
 &trans       &trans                       &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
-                                                          &trans           &mkp LCLK  &ht_mkp_lyr 14 LCLK    &trans         &trans          &trans
+                                                          &trans           &mkp LCLK  &ht_mkp_lyr 15 LCLK    &trans         &trans          &trans
             >;
         };
 
