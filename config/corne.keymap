@@ -397,7 +397,7 @@
 &kp LS(LC(LG(D)))  &none  &kp W           &kp F                &kp P              &kp G          &kp J        &kp L               &kp U                 &kp Y            &none          &kp RCTRL
 &kp RALT           &kp A  &left_hrm2 3 R  &left_hrm_3 LCTRL S  &left_hrm LSHFT T  &kp D          &kp H        &right_hrm LSHFT N  &right_hrm_3 LCTRL E  &right_hrm2 3 I  &kp O          &kp RALT
 &kp LEFT_GUI       &kp Q  &kp Z           &kp C                &kp V              &kp B          &kp K        &kp M               &kp X                 &dot             &kp SEMICOLON  &kp LEFT_GUI
-                                          &ht_lyr 6 6          &ht_mtab 0 SPACE   &ht_lyr 1 4    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 6 6
+                                          &ht_lyr 10 10        &ht_k_lyr 6 SPACE  &ht_lyr 1 4    &ht_lyr 1 4  &ht_mtab 0 SPACE    &ht_lyr 6 6
             >;
         };
 
@@ -454,10 +454,10 @@
 
         in_app_functions {
             bindings = <
-&none  &none   &none   &none               &none                     &none    &none  &none          &none          &none  &none  &none
-&none  &kp N1  &kp N2  &kp LS(LA(LC(N3)))  &kp LS(LC(LA(NUMBER_4)))  &none    &none  &kp LS(LC(A))  &none          &none  &none  &none
-&none  &none   &none   &none               &none                     &none    &none  &none          &none          &none  &none  &none
-                       &ht_lyr 10 10       &none                     &none    &none  &none          &ht_lyr 10 10
+&none  &kp LS(LA(LC(F10)))       &kp LS(LA(LC(F1)))        &kp LA(LC(LS(F2)))        &kp LS(LA(LC(F3)))        &kp LS(LA(LC(F4)))          &kp LS(LA(LC(F5)))        &kp LS(LA(LC(F6)))        &kp LS(LA(LC(F7)))     &kp LS(LC(LA(F8)))     &kp LS(LC(LA(F9)))    &none
+&none  &kp LS(LC(LA(NUMBER_0)))  &kp LS(LA(LC(NUMBER_1)))  &kp LS(LA(LC(NUMBER_2)))  &kp LS(LC(LA(NUMBER_3)))  &kp LS(LA(LC(NUMBER_4)))    &kp LS(LA(LC(NUMBER_5)))  &kp LS(LC(LA(NUMBER_6)))  &kp LC(LA(LS(N7)))     &kp LS(LC(LA(N8)))     &kp LC(LA(LS(N9)))    &none
+&none  &kp LA(LC(LS(COMMA)))     &kp LS(LA(LC(DOT)))       &kp LS(LC(LA(FSLH)))      &kp LS(LA(LC(APOS)))      &kp LS(LC(LA(SEMI)))        &kp LS(LA(LC(LBKT)))      &kp LS(LA(LC(RBKT)))      &kp LS(LC(LA(MINUS)))  &kp LS(LA(LC(EQUAL)))  &kp LS(LA(LC(BSLH)))  &none
+                                                           &ht_lyr 10 10             &none                     &none                       &none                     &none                     &ht_lyr 10 10
             >;
         };
 
