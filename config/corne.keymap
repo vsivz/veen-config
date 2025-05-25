@@ -446,7 +446,7 @@
 
         navigation {
             bindings = <
-&none  &none              &kp LG(LC(LS(T)))  &kp LG(LC(LS(Q)))  &kp LG(RET)    &af4                 &on_MSTab             &on_MTab            &kp LG(H)                    &kp LG(F)               &none              &none
+&none  &none              &kp LG(LC(LS(T)))  &kp LG(LC(LS(Q)))  &kp LG(RET)    &kp LA(F4)           &on_MSTab             &on_MTab            &kp LG(H)                    &kp LG(F)               &none              &none
 &none  &kp LG(LC(LS(J)))  &kp LS(LC(LG(H)))  &kp LG(LA(J))      &kp LA(LG(H))  &kp LG(LC(LS(R)))    &kp LG(LC(UP_ARROW))  &kp LS(LC(LG(Z)))   &kp LG(LC(RIGHT))            &kp LG(LS(LEFT_ARROW))  &kp LS(LG(RIGHT))  &none
 &none  &on_MSTab_2        &on_MTab_2         &on_MSTab_3        &on_MTab_3     &kp LG(F5)           &kp LG(F6)            &kp LC(LG(LS(UP)))  &kp LC(LG(LS(RIGHT_ARROW)))  &kp LC(END)             &kp LC(HOME)       &none
                                              &none              &none          &none                &none                 &none               &none
@@ -509,10 +509,10 @@
 
         tab_helper {
             bindings = <
-&trans  &trans           &trans       &trans           &kp LG(H)    &af4      &kp LS(TAB)  &kp TAB  &trans   &trans  &trans  &trans
-&trans  &trans           &trans       &trans           &trans       &trans    &STab_2      &Tab_2   &trans   &trans  &trans  &trans
-&trans  &kp LC(LS(TAB))  &kp LC(TAB)  &kp LS(LA(TAB))  &kp LA(TAB)  &trans    &trans       &trans   &trans   &trans  &trans  &trans
-                                      &none            &none        &none     &kp ESC      &kp ESC  &kp ESC
+&trans  &trans           &trans       &trans           &kp LG(H)    &kp LA(F4)    &kp LS(TAB)  &kp TAB  &trans   &trans  &trans  &trans
+&trans  &trans           &trans       &trans           &trans       &trans        &STab_2      &Tab_2   &trans   &trans  &trans  &trans
+&trans  &kp LC(LS(TAB))  &kp LC(TAB)  &kp LS(LA(TAB))  &kp LA(TAB)  &trans        &trans       &trans   &trans   &trans  &trans  &trans
+                                      &none            &none        &none         &kp ESC      &kp ESC  &kp ESC
             >;
         };
 
