@@ -521,7 +521,7 @@
 &none  &none                             &none             &none                             &ht_sk LEFT_META LEFT_META          &none           &none         &ht_sk LEFT_META LEFT_META           &none                             &none                 &none                             &none
 &none  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &ht_sk LALT LALT  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LC(LA(LSHFT)) LC(LA(LSHFT))  &kt LEFT_ALT    &kt LEFT_ALT  &ht_sk LA(LC(LSHFT)) LA(LC(LSHIFT))  &ht_sk LS(LEFT_ALT) LS(LEFT_ALT)  &ht_sk LEFT_ALT LALT  &ht_sk LC(LEFT_ALT) LC(LEFT_ALT)  &none
 &none  &none                             &to 0             &none                             &to 9                               &to 11          &to 11        &to 9                                &none                             &to 0                 &none                             &none
-                                                           &ht_lyr 8 8                       &trans                              &trans          &trans        &trans                               &ht_lyr 8 8
+                                                           &ht_lyr 7 7                       &trans                              &trans          &trans        &trans                               &ht_lyr 7 7
             >;
         };
 
