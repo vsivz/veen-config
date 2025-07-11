@@ -453,10 +453,10 @@
 
         navigation {
             bindings = <
-&none  &none              &kp LG(LC(LS(T)))  &kp LG(LC(LS(Q)))  &kp LG(RET)    &kp LA(F4)           &kp LC(END)           &kp LC(HOME)       &kp LG(H)          &kp LG(F)               &none              &none
-&none  &kp LG(LC(LS(J)))  &kp LS(LC(LG(H)))  &kp LG(LA(J))      &kp LA(LG(H))  &kp LG(LC(LS(R)))    &kp LG(LC(UP_ARROW))  &kp LS(LC(LG(Z)))  &kp LG(LC(RIGHT))  &kp LG(LS(LEFT_ARROW))  &kp LS(LG(RIGHT))  &none
-&none  &kp LG(N0)         &kp LG(N1)         &kp LG(N2)         &kp LG(N3)     &kp LG(F5)           &kp LG(F6)            &kp LG(LC(N0))     &kp LG(LC(N1))     &kp LG(LC(N2))          &kp LG(LC(N3))     &none
-                                             &none              &none          &none                &none                 &none              &none
+&none  &none              &kp LG(LC(LS(T)))  &kp LG(LC(LS(Q)))  &kp LG(RET)    &kp LA(F4)           &kp LC(END)           &kp LC(HOME)          &kp LG(H)              &kp LG(F)               &none              &none
+&none  &kp LG(LC(LS(J)))  &kp LS(LC(LG(H)))  &kp LG(LA(J))      &kp LA(LG(H))  &kp LG(LC(LS(R)))    &kp LG(LC(UP_ARROW))  &kp LC(LG(LEFT))      &kp LG(LC(RIGHT))      &kp LG(LS(LEFT_ARROW))  &kp LS(LG(RIGHT))  &none
+&none  &kp LG(N0)         &kp LG(N1)         &kp LG(N2)         &kp LG(N3)     &kp LG(F5)           &kp LG(F6)            &kp LG(LS(LC(LEFT)))  &kp LG(LC(LS(RIGHT)))  &kp LC(END)             &kp LC(HOME)       &none
+                                             &none              &none          &none                &none                 &none                 &none
             >;
         };
 
