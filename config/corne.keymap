@@ -475,6 +475,34 @@
             bindings = <&kp LA(LG(H))>;
             label = "CYCLEFOCUS";
         };
+
+        moveWsUp: moveWsUp {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(LC(UP)))>;
+            label = "MOVEWSUP";
+        };
+
+        moveWsDown: moveWsDown {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(LC(DOWN)))>;
+            label = "MOVEWSDOWN";
+        };
+
+        focusWsUp: focusWsUp {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LG(UP))>;
+            label = "FOCUSWSUP";
+        };
+
+        focusWsDown: focusWsDown {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LG(DOWN))>;
+            label = "FOCUSWSDOWN";
+        };
     };
 
     combos {
@@ -516,10 +544,10 @@
 
         navigation {
             bindings = <
-&none  &none          &kp LG(LC(LS(T)))  &kp LG(LC(LS(Q)))  &kp LG(RET)  &kp LA(F4)           &kp LC(END)           &kp LC(HOME)  &kp LG(H)     &kp LG(F)     &none          &none
-&none  &focusMonPrev  &focusMonNext      &kp LG(LA(J))      &cycleFocus  &kp LG(LC(LS(R)))    &kp LG(LC(UP_ARROW))  &focusWsPrev  &focusWsNext  &moveMonLeft  &moveMonRight  &none
-&none  &kp LG(N0)     &kp LG(N1)         &kp LG(N2)         &kp LG(N3)   &kp LG(F5)           &kp LG(F6)            &moveWsPrev   &moveWsNext   &kp LC(END)   &kp LC(HOME)   &none
-                                         &none              &none        &none                &none                 &none         &none
+&none  &none          &kp LG(LC(LS(T)))  &kp LG(LC(LS(Q)))  &kp LG(RET)   &kp LA(F4)    &kp LC(END)  &kp LC(HOME)  &kp LG(H)     &kp LG(F)     &none          &none
+&none  &focusMonPrev  &focusMonNext      &kp LG(LA(J))      &cycleFocus   &moveWsUp     &moveWsDown  &focusWsPrev  &focusWsNext  &moveMonLeft  &moveMonRight  &none
+&none  &kp LG(N0)     &kp LG(N1)         &focusWsUp         &focusWsDown  &kp LG(F5)    &kp LG(F6)   &moveWsPrev   &moveWsNext   &kp LC(END)   &kp LC(HOME)   &none
+                                         &none              &none         &none         &none        &none         &none
             >;
         };
 
