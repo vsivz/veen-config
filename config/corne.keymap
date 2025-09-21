@@ -465,7 +465,7 @@
         focusMonPrev: focusMonPrev {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LG(LS(H)))>;
+            bindings = <&kp LC(LG(LS(J)))>;
             label = "FOCUSMONPREV";
         };
 
