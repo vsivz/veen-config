@@ -508,11 +508,10 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&macro_press>,
-                <&kp LG(O)>,
+                <&macro_tap>,
+                <&kp LG(LA(O))>,
                 <&macro_pause_for_release>,
-                <&macro_release>,
-                <&kp LG(O)>;
+                <&kp LG(LS(O))>;
 
             label = "NEW_MACRO";
         };
