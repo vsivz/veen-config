@@ -86,7 +86,6 @@
             bindings = <&mo>, <&kp>;
 
             require-prior-idle-ms = <75>;
-            hold-trigger-on-release;
         };
 
         right_hrm2: right_hrm2 {
@@ -99,7 +98,6 @@
             flavor = "balanced";
             hold-trigger-key-positions = <0 1 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 2 3 4 39 40 41 11 23 35>;
             require-prior-idle-ms = <75>;
-            hold-trigger-on-release;
             quick-tap-ms = <0>;
         };
 
@@ -565,19 +563,19 @@
 
         symbols {
             bindings = <
-&none  &kp GRAVE      &kp AMPERSAND    &kp ASTRK    &kp TILDE       &kp QUESTION         &kp BSLH       &kp PIPE   &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none
-&none  &kp EQUAL      &kp UNDER        &kp CARET    &kp APOSTROPHE  &kp DOUBLE_QUOTES    &kp SLASH      &kp MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PLUS          &none
-&none  &kp LESS_THAN  &kp EXCLAMATION  &kp AT       &kp PERCENT     &kp GRAVE            &kp DOLLAR     &kp HASH   &kp LBKT              &kp RBKT               &kp GREATER_THAN  &none
-                                       &ht_lyr 8 8  &none           &ht_lyr 10 10        &ht_lyr 10 10  &none      &ht_lyr 8 8
+&none  &kp GRAVE      &kp AMPERSAND    &kp ASTRK  &kp TILDE       &kp QUESTION         &kp BSLH       &kp PIPE   &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none
+&none  &kp EQUAL      &kp UNDER        &kp CARET  &kp APOSTROPHE  &kp DOUBLE_QUOTES    &kp SLASH      &kp MINUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PLUS          &none
+&none  &kp LESS_THAN  &kp EXCLAMATION  &kp AT     &kp PERCENT     &kp GRAVE            &kp DOLLAR     &kp HASH   &kp LBKT              &kp RBKT               &kp GREATER_THAN  &none
+                                       &none      &none           &ht_lyr 10 10        &ht_lyr 10 10  &none      &none
             >;
         };
 
         functions {
             bindings = <
-&none  &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)     &cpln        &sret          &kp END   &kp HOME  &none
-&none  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DELETE)  &kp RET      &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
-&none  &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE      &screenshot  &kp LC(LA(T))  &end_ret  &selline  &none
-                                     &kp LMETA     &to 0          &mo 5              &mo 12          &mo 12       &kp RALT
+&none     &none         &kp ESC         &capsword     &dlln          &kp LC(LS(TAB))    &kp LC(TAB)     &cpln        &sret          &kp END   &kp HOME  &none
+&kp RALT  &kp LEFT      &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT      &kp LS(TAB)        &kp LC(DELETE)  &kp RET      &kp LC(BSPC)   &kp BSPC  &kp TAB   &none
+&none     &kp LC(LEFT)  &kp LC(DOWN)    &kp LC(UP)    &kp LC(RIGHT)  &none              &kp DELETE      &screenshot  &kp LC(LA(T))  &end_ret  &selline  &none
+                                        &kp LMETA     &to 0          &mo 5              &mo 12          &mo 12       &kp RALT
             >;
         };
 
@@ -649,7 +647,7 @@
 &trans       &trans                       &trans          &mkp MCLK        &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
 &click_hold  &fast_scroll_down MOVE_DOWN  &msc MOVE_DOWN  &msc MOVE_UP     &mkp RCLK  &trans                 &ht_lyr 13 13  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
 &trans       &trans                       &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans     &trans                 &trans         &trans          &trans        &trans          &trans           &trans
-                                                          &trans           &mkp LCLK  &ht_mkp_lyr 15 LCLK    &trans         &trans          &trans
+                                                          &trans           &mkp LCLK  &ht_mkp_lyr 15 LCLK    &trans         &to 0           &trans
             >;
         };
 
